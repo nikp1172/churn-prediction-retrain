@@ -2,7 +2,7 @@ import os
 
 import mlfoundry as mlf
 import servicefoundry.core as sfy
-from servicefoundry import Build, Job, PythonBuild, Resources, Schedule
+from servicefoundry import Build, Job, PythonBuild, Resources, Manual
 
 
 def experiment_track(model, features, labels):
@@ -34,6 +34,7 @@ def deploy_job():
         resources=Resources(
             memory_limit=2500, memory_request=2000, cpu_limit=4, cpu_request=3.5
         ),
+        trigger=Manual(run=True),
         env={
             "TFY_HOST": os.getenv("TFY_HOST"),
             "TFY_API_KEY": os.getenv("TFY_API_KEY"),
