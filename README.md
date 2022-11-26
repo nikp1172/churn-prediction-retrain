@@ -1,6 +1,6 @@
 # Automated Model Training and Deployment Pipeline for Churn Prediction
 
-This project aims to create a model training and deployment pipeline for a Churn Modelling.
+This project aims to create a model training and deployment pipeline for a Churn Modelling which will run automatically using Github Actions when new version of the data is pushed. The model will be deployed on TrueFoundry.
 
 <p align='left'>
   
@@ -23,7 +23,7 @@ This project aims to create a model training and deployment pipeline for a Churn
 - deploy.py # For Job Deployment
 - service.py # For Model Training and Service Deployment
 - model.py # Source code for model
-- app.py # Gradio Source Code 
+- app.py # Gradio Source Code
 - requirements.txt # requirements
 
 ## Contributing
@@ -36,4 +36,4 @@ MIT License
 
 ## Blog
 
-[Medium Blog](https://lucif3r4.medium.com/automating-model-training-and-model-deployment-5bc64bb24d94)
+[Medium Blog]()

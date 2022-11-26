@@ -3,10 +3,9 @@ import pandas as pd
 
 
 def train_model():
-    df = pd.read_csv(
-        'Data/Churn_Modelling.csv')
-    X = df.iloc[:, 3:-1].drop(['Geography', 'Gender'], axis=1)
+    df = pd.read_csv("Data/Churn_Modelling.csv")
+    X = df.iloc[:, 3:-1].drop(["Geography", "Gender"], axis=1)
     y = df.iloc[:, -1]
-    classifier = Classification(predictor = ['rfc'])
+    classifier = Classification(predictor=["rfc"])
     classifier.fit(X, y)
     return classifier.classifier, X, y

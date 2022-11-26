@@ -1,4 +1,4 @@
-name: Push to TrueFoundry
+name: Push to TrueFoundry when data is updated
 on:
   push:
       paths:
