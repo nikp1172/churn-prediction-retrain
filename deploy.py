@@ -4,8 +4,8 @@ import mlfoundry as mlf
 import servicefoundry.core as sfy
 from servicefoundry import Build, Job, PythonBuild, Resources, Schedule
 
-os.environ['WORKSPACE_FQN'] = 'tfy-cluster-euwe1:demo-projects'
-os.environ['TFY_API_KEY'] = 'djE6dHJ1ZWZvdW5kcnk6YXJzaC1hbndhcjo4MGNkMmU='
+os.environ['WORKSPACE_FQN'] = '<your-workspace-fqn>'
+os.environ['TFY_API_KEY'] = '<your-api-key>'
 os.environ["TFY_HOST"] = "https://app.truefoundry.com/"
 
 
