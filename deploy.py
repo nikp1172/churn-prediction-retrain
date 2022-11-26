@@ -4,10 +4,6 @@ import mlfoundry as mlf
 import servicefoundry.core as sfy
 from servicefoundry import Build, Job, PythonBuild, Resources, Schedule
 
-os.environ['WORKSPACE_FQN'] = '<your-workspace-fqn>'
-os.environ['TFY_API_KEY'] = '<your-api-key>'
-os.environ["TFY_HOST"] = "https://app.truefoundry.com/"
-
 
 def experiment_track(model, features, labels):
     mlf_api = mlf.get_client()
