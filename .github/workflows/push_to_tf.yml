@@ -1,4 +1,4 @@
-name: Publish LuciferML to PyPI 
+name: Push to TrueFoundry
 
 on:
   push:
