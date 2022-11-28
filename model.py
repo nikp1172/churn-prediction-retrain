@@ -1,6 +1,6 @@
 from luciferml.supervised.classification import Classification
 import pandas as pd
-
+from deploy_job import experiment_track
 
 def train_model():
     df = pd.read_csv("Data/Churn_Modelling.csv")
@@ -9,3 +9,7 @@ def train_model():
     classifier = Classification(predictor=["rfc"])
     classifier.fit(X, y)
     return classifier.classifier, X, y
+
+def prepare_model():
+    model, features, labels = train_model()
+    experiment_track(model, features, labels)

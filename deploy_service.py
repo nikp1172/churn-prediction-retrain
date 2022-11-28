@@ -3,14 +3,11 @@ import os
 import servicefoundry.core as sfy
 from servicefoundry import Build, PythonBuild, Resources, Service
 
-from deploy import experiment_track
-from model import train_model
+from model import prepare_model
 
 
 def deploy_model():
     sfy.login(api_key=os.getenv("TFY_API_KEY"))
-    model, features, labels = train_model()
-    experiment_track(model, features, labels)
     service = Service(
         name="churn-trained-from-job",
         image=Build(
@@ -32,4 +29,5 @@ def deploy_model():
 
 
 if __name__ == "__main__":
+    prepare_model()
     deploy_model()

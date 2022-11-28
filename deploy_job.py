@@ -24,7 +24,7 @@ def deploy_job():
     sfy.login(api_key=os.getenv("TFY_API_KEY"))
     image = Build(
         build_spec=PythonBuild(
-            command="python service.py",
+            command="python deploy_service.py",
             requirements_path="requirements.txt",
         )
     )
@@ -42,6 +42,7 @@ def deploy_job():
         },
     )
     job.deploy(workspace_fqn=os.getenv("WORKSPACE_FQN"))
+    
 
 
 if __name__ == "__main__":
