@@ -1,6 +1,22 @@
 from luciferml.supervised.classification import Classification
 import pandas as pd
-from deploy_job import experiment_track
+import mlfoundry as mlf
+
+
+def experiment_track(model, features, labels):
+    mlf_api = mlf.get_client()
+    mlf_run = mlf_api.create_run(
+        project_name="churn-train-job", run_name="churn-train-job-1"
+    )
+    fn = mlf_run.log_model(
+        name="Best_Model",
+        model=model,
+        framework=mlf.ModelFramework.SKLEARN,
+        description="My_Model",
+    )
+    mlf_run.log_dataset("features", features)
+    mlf_run.log_dataset("labels", labels)
+
 
 def train_model():
     df = pd.read_csv("Data/Churn_Modelling.csv")
@@ -9,6 +25,7 @@ def train_model():
     classifier = Classification(predictor=["rfc"])
     classifier.fit(X, y)
     return classifier.classifier, X, y
+
 
 def prepare_model():
     model, features, labels = train_model()

@@ -1,23 +1,8 @@
 import os
 
-import mlfoundry as mlf
 import servicefoundry.core as sfy
 from servicefoundry import Build, Job, PythonBuild, Resources, Manual
 
-
-def experiment_track(model, features, labels):
-    mlf_api = mlf.get_client()
-    mlf_run = mlf_api.create_run(
-        project_name="churn-train-job", run_name="churn-train-job-1"
-    )
-    fn = mlf_run.log_model(
-        name="Best_Model",
-        model=model,
-        framework=mlf.ModelFramework.SKLEARN,
-        description="My_Model",
-    )
-    mlf_run.log_dataset("features", features)
-    mlf_run.log_dataset("labels", labels)
 
 
 def deploy_job():
