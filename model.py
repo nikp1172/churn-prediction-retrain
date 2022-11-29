@@ -16,7 +16,7 @@ def experiment_track(model, features, labels):
     )
     mlf_run.log_dataset("features", features)
     mlf_run.log_dataset("labels", labels)
-    return fqn
+    return fqn.fqn
 
 
 def train_model():
