@@ -8,7 +8,7 @@ def experiment_track(model, features, labels):
     mlf_run = mlf_api.create_run(
         project_name="churn-train-job", run_name="churn-train-job-1"
     )
-    fn = mlf_run.log_model(
+    fqn = mlf_run.log_model(
         name="Best_Model",
         model=model,
         framework=mlf.ModelFramework.SKLEARN,
@@ -16,6 +16,7 @@ def experiment_track(model, features, labels):
     )
     mlf_run.log_dataset("features", features)
     mlf_run.log_dataset("labels", labels)
+    return fqn
 
 
 def train_model():
@@ -29,4 +30,5 @@ def train_model():
 
 def prepare_model():
     model, features, labels = train_model()
-    experiment_track(model, features, labels)
+    fqn = experiment_track(model, features, labels)
+    return fqn

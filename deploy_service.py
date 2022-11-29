@@ -2,6 +2,7 @@ import os
 
 import servicefoundry.core as sfy
 from servicefoundry import Build, PythonBuild, Resources, Service
+from batch_infer import monitor
 
 from model import prepare_model
 
@@ -29,5 +30,6 @@ def deploy_model():
 
 
 if __name__ == "__main__":
-    prepare_model()
+    fqn = prepare_model()
     deploy_model()
+    monitor(fqn)
