@@ -17,8 +17,8 @@ def load_data():
     df = pd.read_csv(
         "https://raw.githubusercontent.com/d4rk-lucif3r/Automated-Model-Training-and-Deployment-Pipeline-with-Github-Actions/main/Data/Churn_Modelling.csv")
     df = df.sample(n=20)
-    y = df.pop("Churn")
-    X = df
+    y = df.iloc[:, -1]
+    X = df.iloc[:, 3:-1].drop(["Geography", "Gender"], axis=1)
     return X, y
 
 
