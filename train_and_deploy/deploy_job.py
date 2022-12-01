@@ -19,6 +19,7 @@ def deploy_job():
         ),
         trigger=Manual(run=True),
         env={
+            "TFY_HOST": "https://app.truefoundry.com",
             "TFY_API_KEY": os.getenv("TFY_API_KEY"),
             "WORKSPACE_FQN": os.getenv("WORKSPACE_FQN"),
         },
