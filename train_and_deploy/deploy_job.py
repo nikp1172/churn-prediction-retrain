@@ -3,7 +3,6 @@ from servicefoundry import Build, Job, PythonBuild, Resources, Manual
 
 
 def deploy_job():
-    print(os.environ)
     image = Build(
         build_spec=PythonBuild(
             command="python train_and_deploy.py",
