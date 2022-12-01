@@ -1,5 +1,0 @@
-lucifer-ml
-mlfoundry
-servicefoundry>=0.3.3
-gradio
-IPython

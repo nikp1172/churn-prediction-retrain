@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import uuid
 import time
@@ -6,24 +5,23 @@ from datetime import datetime
 
 import mlfoundry
 
-client = mlfoundry.get_client()
 
-
-def load_model(fqn):
+def load_model(client, fqn):
     return client.get_model(fqn).load()
 
 
 def load_data():
-    df = pd.read_csv(
-        "https://raw.githubusercontent.com/d4rk-lucif3r/Automated-Model-Training-and-Deployment-Pipeline-with-Github-Actions/main/Data/Churn_Modelling.csv")
-    df = df.sample(n=20)
+    df = pd.read_csv("Data/Churn_Modelling.csv")
+    df = df.sample(n=200)
     y = df.iloc[:, -1]
     X = df.iloc[:, 3:-1].drop(["Geography", "Gender"], axis=1)
     return X, y
 
 
 def monitor(fqn):
-    model = load_model(fqn)
+    client = mlfoundry.get_client()
+    model = load_model(client, fqn)
+    print("reading data")
     X, y_actual = load_data()
     y_pred = model.predict(X)
 
@@ -43,13 +41,12 @@ def monitor(fqn):
                     data_id=data_id,
                     features=row.to_dict(),
                     prediction_data={
-                        "value": prediction_value,
+                        "value": str(prediction_value),
                     },
                     occurred_at=datetime.utcnow(),
                 )
             ],
         )
-
     time.sleep(10)
 
     print("Logging actuals ...")

@@ -2,7 +2,7 @@ name: Push to TrueFoundry when data is updated
 on:
   push:
       paths:
-        - Data/*.csv
+        - train_and_deploy/Data/*.csv
 jobs:
   deploy:
     runs-on: ubuntu-20.04
@@ -19,7 +19,7 @@ jobs:
       env:
         WORKSPACE_FQN : ${{ secrets.WORKSPACE_FQN }}
         TFY_API_KEY : ${{ secrets.TFY_API_KEY }}
-        TFY_HOST: ${{ secrets.TFY_HOST }}
       run: |
+        cd train_and_deploy
         python deploy_job.py
         

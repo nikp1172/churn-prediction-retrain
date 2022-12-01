@@ -1,0 +1,6 @@
+mlfoundry
+servicefoundry
+gradio
+numpy
+pandas
+sklearn

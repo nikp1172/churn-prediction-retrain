@@ -9,12 +9,13 @@ import os
 sfy.login(api_key=os.getenv("TFY_API_KEY"))
 
 mlf_client = mlf.get_client()
-runs = mlf_client.get_all_runs("churn-train-job")
+runs = mlf_client.get_all_runs("churn-train")
 run = mlf_client.get_run(runs["run_id"][0])
 
 model = mlf_client.get_model(
-    f"model:truefoundry/arsh-anwar/churn-train-job/Best_Model:{runs['run_name'][0].split('-')[-1]}"
+    os.getenv('MODEL_VERSION_FQN')
 )
+model_schema = model.model_schema
 model = model.load()
 
 
@@ -50,11 +51,7 @@ def predict(*val):
     return pred.tolist()[0]
 
 
-desc = f"""## Model Deployed at {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
-### Made with ❤️ by Arsh using TrueFoundry's Gradio Deployment
-- [Kaggle](https://www.kaggle.com/d4rklucif3r/churn-modelling-deployment-luciferml)
-- [Github]()
-- [Blog]()"""
+desc = f"""## Model Deployed at {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}"""
 
 app = gr.Interface(
     fn=predict,
