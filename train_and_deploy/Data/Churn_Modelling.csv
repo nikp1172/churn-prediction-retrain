@@ -7396,4 +7396,4 @@ RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,Num
 7395,15673747,Ayers,519,France,Female,22,8,0,1,0,1,167553.06,0
 7396,15808386,Cocci,721,Germany,Female,45,7,138523.2,1,0,0,59604.45,1
 7397,15603565,Mackenzie,603,Spain,Female,56,5,90778.76,2,1,0,162223.67,1
-7398,15744044,Fiorentini,572,Germany,Male,47,4,99353.42,1,1,0,196549.81,1
+7398,15744044,Fiorentini,572,Germany,Male,47,4,99353.42,1,1,0,196549.811,1

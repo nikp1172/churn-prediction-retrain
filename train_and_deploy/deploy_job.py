@@ -4,7 +4,9 @@ from servicefoundry import Build, Job, PythonBuild, Resources, Manual
 
 
 def deploy_job():
+    print("Trying to login")
     sfy.login(api_key=os.getenv("TFY_API_KEY"))
+    print("Login Success")
     image = Build(
         build_spec=PythonBuild(
             command="python train_and_deploy.py",
