@@ -14,7 +14,7 @@ def deploy_job():
         name="churn-train-deploy",
         image=image,
         resources=Resources(
-            memory_limit=2500, memory_request=2000, cpu_limit=4, cpu_request=3.5
+            memory_limit=2500, memory_request=2000, cpu_limit=1, cpu_request=1
         ),
         trigger=Manual(run=True),
         env={
